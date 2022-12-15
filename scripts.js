@@ -1,34 +1,51 @@
-var computerChoices = ["rock", "paper", "scissors"];
+playerScore = 0;
+computerScore = 0;
+var choices = ["rock", "paper", "scissors"];
 
 /* Randomly generates a computer choice */
 function getComputerSelection() {
-    return computerChoices[Math.floor(Math.random() * 3)];
-}
-computerSelection = getComputerSelection();
-console.log(computerSelection);
-
-var playerSelection = prompt("Please type in your choice.").toLowerCase();
-/*Checks whether the user's choice is valid */
-while (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
-    var playerSelection = prompt(playerSelection + " isn't a valid choice. Please type in rock, paper or scissors.").toLowerCase();
+    return choices[Math.floor(Math.random() * 3)];
 }
 
-/* */
-function playRound(playerSelection, computerSelection) {
-    if (playerSelection == computerSelection) {
-        return result = ["It's a tie"];
-    } else if (playerSelection == "rock" && computerSelection == "paper") {
-        return result = ["You lose! Paper beats Rock"];
-    } else if (playerSelection == "rock" && computerSelection == "scissors") {
-        return result = ["You win! Rock beats Scissors"];
-    } else if (playerSelection == "paper" && computerSelection == "rock") {
-        return result = ["You win! Paper beats Rock"];
-    } else if (playerSelection == "paper" && computerSelection == "scissors") {
-        return result = ["You lose! Scissors beat Paper"];
-    } else if (playerSelection == "scissors" && computerSelection == "rock") {
-        return result = ["You lose! Rock beats Scissors"];
-    } else if (playerSelection == "scissors" && computerSelection == "paper") {
-        return result = ["You win! Scissors beat Paper"];
+/*get users input and filters it*/
+function getPlayerSelection() {
+    let playerSelection = prompt("Please type in Rock, Paper or Scissors.");
+    while (playerSelection == null) {
+        playerSelection = prompt("Please type in Rock, Paper or Scissors.");
+    }
+    playerSelection = playerSelection.toLowerCase();
+    while (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
+        playerSelection = prompt(playerSelection + " isn't a valid choice. Please type in Rock, Paper or Scissors (capitalization doesn't matter).");
+        while (playerSelection == null) {
+            playerSelection = prompt("Please type in Rock, Paper or Scissors.").toLowerCase();
+        }
+        playerSelection = playerSelection.toLowerCase();
+    }
+    playerSelection = playerSelection.toLowerCase();
+    return playerSelection;
+}
+/*Play a single round */
+function playRound() {
+    computerChoice = getComputerSelection();
+    playerChoice = getPlayerSelection();
+}
+
+function game() {
+    playRound();
+    console.log(checkWinner());
+}
+/*check who is the winner */
+function checkWinner() {
+    if (computerChoice == playerChoice) {
+        return "It's a tie";
+    } else if
+        ((playerChoice == "rock" && computerChoice == "scissors") ||
+        (playerChoice == "paper" && computerChoice == "rock") ||
+        (playerChoice == "scissors" && computerChoice == "paper")) {
+        return "You win!" + playerChoice + " beats " + computerChoice;
+    } else {
+        return "You lose!" + computerChoice + " beats " + playerChoice;
     }
 }
-console.log(playRound(playerSelection, computerSelection));
+
+game();
