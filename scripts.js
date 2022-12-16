@@ -4,14 +4,23 @@ const choices = ["rock", "paper", "scissors"];
 /*main game function that actually plays the game*/
 function game() {
     for (let i = 1; i <= 5; i++) {
-        playRound();
-        console.log("You chose: " + playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1));
-        console.log("Opponent chose: " + computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1));
-        console.log(checkRoundWinner());
-        console.log("______________________________________");
-        countScores();
+        if (playerScore == 3 || computerScore == 3) {
+            return console.log(finalWinner());
+        } else {
+            playRound();
+            console.log("Round " + i);
+            console.log("You chose: " + playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1));
+            console.log("Opponent chose: " + computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1));
+            console.log(checkRoundWinner());
+            console.log("______________________________________");
+            countScores();
+        }
     }
-    console.log(finalWinner());
+    if (playerScore == computerScore) {
+        return "It's a tie! Nobody won.";
+    } else {
+        return console.log(finalWinner());
+    }
 }
 /* Randomly generates a computer choice */
 function getComputerSelection() {
@@ -44,7 +53,7 @@ function playRound() {
 /*check who is the winner */
 function checkRoundWinner() {
     if (computerChoice == playerChoice) {
-        return "It's a tie";
+        return "It's a tie!";
     } else if
         ((playerChoice == "rock" && computerChoice == "scissors") ||
         (playerChoice == "paper" && computerChoice == "rock") ||
@@ -71,4 +80,5 @@ function finalWinner() {
         return "You lost! Computer is the winner.";
     }
 }
+
 game();
