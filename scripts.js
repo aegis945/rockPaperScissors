@@ -5,11 +5,13 @@ const choices = ["rock", "paper", "scissors"];
 function game() {
     for (let i = 1; i <= 5; i++) {
         playRound();
-        console.log("You chose " + playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1));
-        console.log("Opponent chose " + computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1));
+        console.log("You chose: " + playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1));
+        console.log("Opponent chose: " + computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1));
         console.log(checkRoundWinner());
-        console.log("______________________________________")
+        console.log("______________________________________");
+        countScores();
     }
+    console.log(finalWinner());
 }
 /* Randomly generates a computer choice */
 function getComputerSelection() {
@@ -53,4 +55,20 @@ function checkRoundWinner() {
     }
 }
 
+function countScores() {
+    let result = checkRoundWinner();
+    if (result.includes("win")) {
+        return playerScore++;
+    } else if (result.includes("lose")) {
+        return computerScore++;
+    }
+}
+
+function finalWinner() {
+    if (playerScore > computerScore) {
+        return "Congratulations! You are the winner!";
+    } else {
+        return "You lost! Computer is the winner.";
+    }
+}
 game();
