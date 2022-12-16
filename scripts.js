@@ -16,8 +16,8 @@ function game() {
             countScores();
         }
     }
-    if (playerScore == computerScore) {
-        return "It's a tie! Nobody won.";
+    if (playerScore === computerScore) {
+        return console.log("It's a tie! Nobody won.");
     } else {
         return console.log(finalWinner());
     }
