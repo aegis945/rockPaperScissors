@@ -81,4 +81,4 @@ function finalWinner() {
     }
 }
 
-game();
+setTimeout(() => { game(); }, 5000);
