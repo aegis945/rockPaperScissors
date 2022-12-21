@@ -33,7 +33,6 @@ function getPlayerSelection() {
     while (playerSelection == null) {
         playerSelection = prompt("Please type in Rock, Paper or Scissors.");
     }
-    playerSelection = playerSelection.toLowerCase();
     while (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
         playerSelection = prompt(playerSelection + " isn't a valid choice. Please type in Rock, Paper or Scissors (capitalization doesn't matter).");
         while (playerSelection == null) {
