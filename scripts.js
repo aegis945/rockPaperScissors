@@ -3,24 +3,22 @@ computerScore = 0;
 const choices = ["rock", "paper", "scissors"];
 /*main game function that actually plays the game*/
 function game() {
-    for (let i = 1; i <= 5; i++) {
-        if (playerScore == 3 || computerScore == 3) {
-            return console.log(finalWinner());
-        } else {
-            playRound();
-            console.log("Round " + i);
-            console.log("You chose: " + playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1));
-            console.log("Opponent chose: " + computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1));
-            console.log(checkRoundWinner());
-            console.log("______________________________________");
-            countScores();
-        }
-    }
-    if (playerScore === computerScore) {
-        return console.log("It's a tie! Nobody won.");
-    } else {
+    if (playerScore == 3 || computerScore == 3) {
         return console.log(finalWinner());
+    } else {
+        playRound();
+        console.log("Round " + i);
+        console.log("You chose: " + playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1));
+        console.log("Opponent chose: " + computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1));
+        console.log(checkRoundWinner());
+        console.log("______________________________________");
+        countScores();
     }
+}
+if (playerScore === computerScore) {
+    return console.log("It's a tie! Nobody won.");
+} else {
+    return console.log(finalWinner());
 }
 /* Randomly generates a computer choice */
 function getComputerSelection() {
