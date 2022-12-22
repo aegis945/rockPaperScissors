@@ -1,0 +1,44 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    min-height: 100vh;
+    background-image: linear-gradient(180deg, #88bdbc 0%, #254e58 100%);
+}
+
+.screen {
+    display: flex;
+    justify-content: center;
+    gap: 300px;
+    width: 100%;
+    margin-bottom: 130px;
+    flex-wrap: wrap;
+}
+
+img {
+    width: 120px;
+    height: 120px;
+}
+
+.playerImg,
+.computerImg {
+    background-color: #2e6966;
+    border-style: solid;
+    display: flex;
+    gap: 15px;
+}
+
+.playerScreen,
+.computerScreen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.name {
+    margin-bottom: 5px;
+    font-size: 18px;
+}
