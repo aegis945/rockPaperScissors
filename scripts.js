@@ -19,10 +19,16 @@ function getComputerSelection() {
 }
 
 function playRound(playerChoice) {
+    /*stops game if play again button appears*/
+    let stopGame = document.querySelector(".resetGame");
+    if (window.getComputedStyle(stopGame).visibility === "visible") {
+        return;
+    }
     let computerChoice = getComputerSelection();
     logRoundResults(playerChoice, computerChoice);
     displayScores();
     if (playerScore === 3 || computerScore === 3) {
+        displayScores();
         finalWinner();
         resetGame();
     }

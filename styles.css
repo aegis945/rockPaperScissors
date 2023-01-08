@@ -63,7 +63,15 @@ ol {
 }
 
 .computerImg {
-    opacity: .5;
+    opacity: 0.5;
+}
+
+.playerImg {
+    cursor: pointer;
+}
+
+.playerIcon:hover {
+    transform: translateY(-7px);
 }
 
 .resetGame {
@@ -93,6 +101,6 @@ button:hover {
     transform: translateY(-7px);
 }
 
-button:active {
-    transform: translateY(-1px);
+.active {
+    opacity: 1;
 }
