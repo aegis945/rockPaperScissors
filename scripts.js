@@ -1,9 +1,9 @@
 playerScore = 0;
 computerScore = 0;
 const choices = ["rock", "paper", "scissors"];
-const imgs = document.querySelectorAll("img");
 /*game starts when user clicks on an image */
 function startGame() {
+    const imgs = document.querySelectorAll("img");
     imgs.forEach(img => {
         img.addEventListener("click", e => {
             if (img.id) {
@@ -27,15 +27,21 @@ function playRound(playerChoice) {
 
 
 function checkRoundWinner(playerChoice, computerChoice) {
+    let ul = document.getElementById("list");
+    let li = document.createElement("li");
+
     if (computerChoice == playerChoice) {
-        console.log("It's a tie!");
+        li.appendChild(document.createTextNode("It's a tie!"));
+        ul.appendChild(li);
     } else if
         ((playerChoice == "rock" && computerChoice == "scissors") ||
         (playerChoice == "paper" && computerChoice == "rock") ||
         (playerChoice == "scissors" && computerChoice == "paper")) {
-        console.log("You win this round! " + playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1).toLowerCase() + " beats " + computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1));
+        li.appendChild(document.createTextNode("You win this round! " + playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1).toLowerCase() + " beats " + computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)));
+        ul.appendChild(li);
     } else {
-        console.log("You lose this round! " + computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1).toLowerCase() + " beats " + playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1));
+        li.appendChild(document.createTextNode("You lose this round! " + computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1).toLowerCase() + " beats " + playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1)));
+        ul.appendChild(li);
     }
 }
 
