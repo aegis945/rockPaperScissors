@@ -42,3 +42,24 @@ img {
     margin-bottom: 5px;
     font-size: 18px;
 }
+
+.roundContainer {
+    font-size: 30px;
+}
+
+.roundResults {
+    height: 200px;
+    margin-bottom: 50px;
+    font-size: 18px;
+}
+
+ol {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 0;
+}
+
+.computerImg {
+    opacity: .5;
+}
