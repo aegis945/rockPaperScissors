@@ -1,38 +1,41 @@
 playerScore = 0;
 computerScore = 0;
 const choices = ["rock", "paper", "scissors"];
-
-/*game starts when user clicks on an image */
 const imgs = document.querySelectorAll("img");
-imgs.forEach(img => {
-    img.addEventListener("click", e => {
-        if (img.id) {
-            console.log(img.id);
-        }
+/*game starts when user clicks on an image */
+function startGame() {
+    imgs.forEach(img => {
+        img.addEventListener("click", e => {
+            if (img.id) {
+                playRound(img.id);
+            }
+        })
     })
-})
+}
 
 /* Randomly generates a computer choice */
 function getComputerSelection() {
     return choices[Math.floor(Math.random() * 3)];
 }
 
-function playRound() {
+function playRound(playerChoice) {
     computerChoice = getComputerSelection();
-    playerChoice = getPlayerSelection();
+    console.log(playerChoice);
+    console.log(computerChoice);
+    checkRoundWinner(playerChoice, computerChoice);
 }
 
 
-function checkRoundWinner() {
+function checkRoundWinner(playerChoice, computerChoice) {
     if (computerChoice == playerChoice) {
-        return "It's a tie!";
+        console.log("It's a tie!");
     } else if
         ((playerChoice == "rock" && computerChoice == "scissors") ||
         (playerChoice == "paper" && computerChoice == "rock") ||
         (playerChoice == "scissors" && computerChoice == "paper")) {
-        return "You win this round! " + playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1).toLowerCase() + " beats " + computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1);
+        console.log("You win this round! " + playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1).toLowerCase() + " beats " + computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1));
     } else {
-        return "You lose this round! " + computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1).toLowerCase() + " beats " + playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1);
+        console.log("You lose this round! " + computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1).toLowerCase() + " beats " + playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1));
     }
 }
 
@@ -45,6 +48,10 @@ function countScores() {
     }
 }
 
+function logRoundResults() {
+
+}
+
 function finalWinner() {
     if (playerScore === computerScore) {
         return console.log("It's a tie! Nobody won.");
@@ -55,6 +62,7 @@ function finalWinner() {
     }
 }
 
+startGame();
 /* if (playerScore == 3 || computerScore == 3) {
     return console.log(finalWinner());
 } else {
