@@ -48,12 +48,47 @@ function displayComputerSelection(computerChoice) {
         }, 1500);
     }
 }
+
+function displayPlayerChoice(playerChoice) {
+    if (playerChoice === "rock") {
+        document.querySelector("#rock").style.opacity = "1";
+        document.querySelector("#rock").style.transform = "translate(0,-7px)";
+        setTimeout(() => {
+            document.querySelector("#rock").style.opacity = "0.5";
+        }, 1500);
+        setTimeout(() => {
+            document.querySelector("#rock").style.transform = "translate(0px)";
+        }, 1500);
+
+    } else if (playerChoice === "paper") {
+        document.querySelector("#paper").style.opacity = "1";
+        document.querySelector("#paper").style.transform = "translate(0,-7px)";
+        setTimeout(() => {
+            document.querySelector("#paper").style.opacity = "0.5";
+        }, 1500);
+        setTimeout(() => {
+            document.querySelector("#paper").style.transform = "translate(0px)";
+        }, 1500);
+
+    } else if (playerChoice === "scissors") {
+        document.querySelector("#scissors").style.opacity = "1";
+        document.querySelector("#scissors").style.transform = "translate(0,-7px)";
+        setTimeout(() => {
+            document.querySelector("#scissors").style.opacity = "0.5";
+        }, 1500);
+        setTimeout(() => {
+            document.querySelector("#scissors").style.transform = "translate(0px)";
+        }, 1500);
+    }
+}
+
 function playRound(playerChoice) {
     /*stops game if play again button appears*/
     let stopGame = document.querySelector(".resetGame");
     if (window.getComputedStyle(stopGame).visibility === "visible") {
         return;
     }
+    displayPlayerChoice(playerChoice);
     let computerChoice = getComputerSelection();
     displayComputerSelection(computerChoice);
     logRoundResults(playerChoice, computerChoice);
