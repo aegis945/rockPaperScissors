@@ -6,18 +6,48 @@ function startGame() {
     const imgs = document.querySelectorAll("img");
     imgs.forEach(img => {
         img.addEventListener("click", e => {
-            if (img.id) {
+            if (img.id === "rock" || img.id === "paper" || img.id === "scissors") {
                 playRound(img.id);
             }
         })
     })
 }
-
 /* Randomly generates a computer choice */
 function getComputerSelection() {
     return choices[Math.floor(Math.random() * 3)];
 }
+function displayComputerSelection(computerChoice) {
+    if (computerChoice === "rock") {
+        document.querySelector("#compRock").style.opacity = "1";
+        document.querySelector("#compRock").style.transform = "translate(0,-7px)";
+        setTimeout(() => {
+            document.querySelector("#compRock").style.opacity = "0.5";
+        }, 1500);
+        setTimeout(() => {
+            document.querySelector("#compRock").style.transform = "translate(0px)";
+        }, 1500);
 
+    } else if (computerChoice === "paper") {
+        document.querySelector("#compPaper").style.opacity = "1";
+        document.querySelector("#compPaper").style.transform = "translate(0,-7px)";
+        setTimeout(() => {
+            document.querySelector("#compPaper").style.opacity = "0.5";
+        }, 1500);
+        setTimeout(() => {
+            document.querySelector("#compPaper").style.transform = "translate(0px)";
+        }, 1500);
+
+    } else if (computerChoice === "scissors") {
+        document.querySelector("#compScissors").style.opacity = "1";
+        document.querySelector("#compScissors").style.transform = "translate(0,-7px)";
+        setTimeout(() => {
+            document.querySelector("#compScissors").style.opacity = "0.5";
+        }, 1500);
+        setTimeout(() => {
+            document.querySelector("#compScissors").style.transform = "translate(0px)";
+        }, 1500);
+    }
+}
 function playRound(playerChoice) {
     /*stops game if play again button appears*/
     let stopGame = document.querySelector(".resetGame");
@@ -25,6 +55,7 @@ function playRound(playerChoice) {
         return;
     }
     let computerChoice = getComputerSelection();
+    displayComputerSelection(computerChoice);
     logRoundResults(playerChoice, computerChoice);
     displayScores();
     if (playerScore === 3 || computerScore === 3) {
@@ -85,7 +116,7 @@ function resetGame() {
     button.addEventListener("click", () => {
         document.querySelector(".roundContainer").textContent = "Round Log";
         document.querySelector(".playerScore").textContent = "Player Score:";
-        document.querySelector(".computerScore").textContent = "ComputerScore";
+        document.querySelector(".computerScore").textContent = "Computer Score:";
         playerScore = 0;
         computerScore = 0;
 
